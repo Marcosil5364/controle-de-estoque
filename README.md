@@ -1,59 +1,146 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏥 Sistema de Controle de Estoque - Hospital Municipal de Igarassu-PE
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.x-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
-## About Laravel
+## 📋 Sobre o Projeto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+O **Sistema de Controle de Estoque** foi desenvolvido especialmente para o **Hospital Municipal de Igarassu-PE**, com o objetivo de modernizar e otimizar a gestão de materiais e insumos hospitalares. O sistema oferece uma solução completa para controle de entradas, saídas, notas fiscais e gerenciamento de usuários, garantindo maior eficiência e transparência na administração do estoque.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🎯 Objetivos do Projeto
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- ✅ Digitalizar e automatizar o controle de estoque hospitalar
+- ✅ Reduzir perdas e desperdícios de materiais
+- ✅ Garantir rastreabilidade de todas as movimentações
+- ✅ Facilitar a gestão de notas fiscais e documentos
+- ✅ Controlar prazos de validade e estoque mínimo
+- ✅ Melhorar a tomada de decisão com relatórios gerenciais
+- ✅ Garantir segurança e controle de acesso por usuários
 
-## Learning Laravel
+## 🚀 Tecnologias Utilizadas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Backend
+| Tecnologia | Versão | Descrição |
+|------------|--------|-----------|
+| ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white) | 8.2 | Linguagem de programação principal |
+| ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white) | 12.x | Framework PHP para desenvolvimento web |
+| ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white) | 8.0 | Banco de dados relacional |
+| ![Composer](https://img.shields.io/badge/Composer-885630?style=flat-square&logo=composer&logoColor=white) | 2.x | Gerenciador de dependências PHP |
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Frontend
+| Tecnologia | Versão | Descrição |
+|------------|--------|-----------|
+| ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white) | 3.x | Framework CSS utilitário |
+| ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) | ES6 | Linguagem de programação frontend |
+| ![Font Awesome](https://img.shields.io/badge/Font_Awesome-339AF0?style=flat-square&logo=fontawesome&logoColor=white) | 6.x | Biblioteca de ícones |
+| ![Alpine.js](https://img.shields.io/badge/Alpine.js-8BC0D0?style=flat-square&logo=alpinedotjs&logoColor=white) | 3.x | Framework JavaScript leve |
 
-## Laravel Sponsors
+### Ferramentas de Desenvolvimento
+| Tecnologia | Versão | Descrição |
+|------------|--------|-----------|
+| ![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white) | Latest | Editor de código |
+| ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white) | 5.x | Build tool e bundler |
+| ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white) | 2.x | Controle de versão |
+| ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white) | - | Repositório remoto |
+| ![XAMPP](https://img.shields.io/badge/XAMPP-FB7A24?style=flat-square&logo=xampp&logoColor=white) | 8.x | Ambiente de desenvolvimento local |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Pacotes Laravel Utilizados
+- **Laravel Breeze** - Autenticação simples e elegante
+- **Laravel Tinker** - Interação com o banco de dados via linha de comando
+- **Laravel Sail** - Ambiente Docker para desenvolvimento
+- **Laravel Pint** - Formatação de código PHP
+- **Laravel Pail** - Visualização de logs no terminal
 
-### Premium Partners
+## 📦 Funcionalidades Implementadas
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 🔐 Autenticação e Usuários
+- ✅ Login seguro com autenticação de usuários
+- ✅ Cadastro, edição e exclusão de usuários
+- ✅ Proteção de rotas por autenticação
+- ✅ Sistema de "lembrar-me" para acesso rápido
+- ✅ Perfil de usuário com edição de dados
 
-## Contributing
+### 📊 Dashboard
+- ✅ Visão geral do estoque com cards informativos
+- ✅ Total de produtos cadastrados
+- ✅ Alertas de produtos com estoque baixo
+- ✅ Valor total do estoque
+- ✅ Movimentações do dia (entradas e saídas)
+- ✅ Últimas movimentações realizadas
+- ✅ Ações rápidas para entrada/saída/ajuste de estoque
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 🏷️ Categorias
+- ✅ CRUD completo de categorias
+- ✅ Controle de ativação/desativação
+- ✅ Filtro por status
+- ✅ Validação de dados
 
-## Code of Conduct
+### 🚚 Fornecedores
+- ✅ CRUD completo de fornecedores
+- ✅ Campos completos (CNPJ, telefone, endereço, etc.)
+- ✅ Máscaras para campos (CNPJ, telefone, CEP)
+- ✅ Validação de CNPJ único
+- ✅ Visualização de produtos por fornecedor
+- ✅ Histórico de notas fiscais por fornecedor
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 📦 Produtos
+- ✅ CRUD completo de produtos
+- ✅ Controle de preços (compra, venda, promocional)
+- ✅ Gerenciamento de estoque mínimo e máximo
+- ✅ Código de barras e SKU
+- ✅ Unidade de medida
+- ✅ Localização no estoque
+- ✅ Filtros avançados (busca, categoria, estoque baixo)
+- ✅ Alertas visuais de estoque crítico
 
-## Security Vulnerabilities
+### 📊 Movimentações de Estoque
+- ✅ Entrada de produtos no estoque
+- ✅ Saída de produtos com validação de estoque
+- ✅ Ajuste de estoque para correções
+- ✅ Histórico completo de movimentações
+- ✅ Filtros por período, produto e tipo de movimento
+- ✅ Registro de motivo e documento
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 📄 Notas Fiscais
+- ✅ Cadastro de notas fiscais de entrada e saída
+- ✅ Campos fiscais completos (ICMS, IPI, PIS, COFINS)
+- ✅ Itens da nota fiscal com produtos
+- ✅ Processamento automático de entrada no estoque
+- ✅ Validação de chave de acesso
+- ✅ Armazenamento de XML (opcional)
+- ✅ Relação com fornecedores
 
-## License
+### 👥 Gerenciamento de Usuários
+- ✅ Criação de novos usuários
+- ✅ Edição de dados
+- ✅ Alteração de senha
+- ✅ Exclusão segura (não permite auto-exclusão)
+- ✅ Listagem paginada
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🎨 Design e Interface
+
+### Layout Moderno e Responsivo
+- 🎨 **Gradientes animados** na tela de login
+- 🖼️ **Logo personalizada** no cabeçalho e sidebar
+- 🎯 **Ícones coloridos** com fundo suave para cada menu
+- 📱 **Design responsivo** para desktop e tablets
+- ✨ **Animações suaves** em hover e transições
+- 🎪 **Cards animados** com efeitos de elevação
+- 🔄 **Scrollbar personalizada** com gradiente
+
+### Paleta de Cores
+- 🟣 **Roxo/Lilás** - Gradiente principal (#667eea → #764ba2)
+- 🔵 **Azul** - Dashboard e ações principais
+- 🟢 **Verde** - Entradas e confirmações
+- 🔴 **Vermelho** - Saídas e exclusões
+- 🟡 **Amarelo** - Alertas e ajustes
+
+## 🏗️ Arquitetura do Sistema
+
+### Estrutura MVC

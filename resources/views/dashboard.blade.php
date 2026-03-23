@@ -7,11 +7,11 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-2xl font-semibold text-gray-900">Dashboard</h1>
     </div>
-    
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <!-- Cards -->
         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mt-8">
-            <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="bg-white overflow-hidden shadow rounded-lg card-hover">
                 <div class="p-5">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
@@ -26,8 +26,8 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="bg-white overflow-hidden shadow rounded-lg">
+
+            <div class="bg-white overflow-hidden shadow rounded-lg card-hover">
                 <div class="p-5">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
@@ -42,8 +42,8 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="bg-white overflow-hidden shadow rounded-lg">
+
+            <div class="bg-white overflow-hidden shadow rounded-lg card-hover">
                 <div class="p-5">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
@@ -58,8 +58,8 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="bg-white overflow-hidden shadow rounded-lg">
+
+            <div class="bg-white overflow-hidden shadow rounded-lg card-hover">
                 <div class="p-5">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
@@ -77,7 +77,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Quick Actions -->
         <div class="mt-8">
             <h2 class="text-lg font-medium text-gray-900 mb-4">Ações Rápidas</h2>
@@ -96,7 +96,7 @@
                 </a>
             </div>
         </div>
-        
+
         <!-- Últimas Movimentações -->
         <div class="mt-8">
             <h2 class="text-lg font-medium text-gray-900 mb-4">Últimas Movimentações</h2>
@@ -117,7 +117,7 @@
                                         </p>
                                     </div>
                                     <div class="ml-2 flex-shrink-0 flex">
-                                        <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                                        <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full
                                             {{ $mov->tipo == 'entrada' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                             {{ $mov->tipo == 'entrada' ? 'Entrada' : 'Saída' }}
                                         </p>
@@ -136,7 +136,7 @@
                                     </div>
                                     <p class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
                                         <i class="fas fa-calendar mr-1"></i>
-                                        {{ $mov->data_movimentacao->format('d/m/Y H:i') }}
+                                        {{ \Carbon\Carbon::parse($mov->data_movimentacao)->format('d/m/Y H:i') }}
                                     </p>
                                 </div>
                             </div>
@@ -150,10 +150,108 @@
     </div>
 </div>
 
-<!-- Modais de Movimentação -->
-@include('partials.modal_entrada')
-@include('partials.modal_saida')
-@include('partials.modal_ajuste')
+<!-- Modal Entrada -->
+<div id="modalEntrada" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div class="mt-3">
+            <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Entrada de Estoque</h3>
+            <form action="{{ route('estoque.entrada') }}" method="POST" id="formEntrada">
+                @csrf
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Produto</label>
+                    <select name="produto_id" required class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <option value="">Selecione um produto</option>
+                        @foreach($produtos as $produto)
+                            <option value="{{ $produto->id }}">{{ $produto->nome }} (Estoque: {{ $produto->quantidade_atual ?? 0 }})</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Quantidade</label>
+                    <input type="number" name="quantidade" required min="1" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Valor Unitário (opcional)</label>
+                    <input type="number" step="0.01" name="valor_unitario" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Motivo</label>
+                    <textarea name="motivo" rows="2" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                </div>
+                <div class="flex justify-end space-x-2">
+                    <button type="button" onclick="closeModal('entrada')" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400">Cancelar</button>
+                    <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">Confirmar Entrada</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Saída -->
+<div id="modalSaida" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div class="mt-3">
+            <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Saída de Estoque</h3>
+            <form action="{{ route('estoque.saida') }}" method="POST" id="formSaida">
+                @csrf
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Produto</label>
+                    <select name="produto_id" required class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <option value="">Selecione um produto</option>
+                        @foreach($produtos as $produto)
+                            <option value="{{ $produto->id }}">{{ $produto->nome }} (Estoque: {{ $produto->quantidade_atual ?? 0 }})</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Quantidade</label>
+                    <input type="number" name="quantidade" required min="1" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Motivo</label>
+                    <textarea name="motivo" rows="2" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                </div>
+                <div class="flex justify-end space-x-2">
+                    <button type="button" onclick="closeModal('saida')" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400">Cancelar</button>
+                    <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">Confirmar Saída</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Ajuste -->
+<div id="modalAjuste" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div class="mt-3">
+            <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Ajuste de Estoque</h3>
+            <form action="{{ route('estoque.ajuste') }}" method="POST" id="formAjuste">
+                @csrf
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Produto</label>
+                    <select name="produto_id" required class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        <option value="">Selecione um produto</option>
+                        @foreach($produtos as $produto)
+                            <option value="{{ $produto->id }}">{{ $produto->nome }} (Estoque atual: {{ $produto->quantidade_atual ?? 0 }})</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Nova Quantidade</label>
+                    <input type="number" name="nova_quantidade" required min="0" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Motivo do Ajuste</label>
+                    <textarea name="motivo" required rows="2" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                </div>
+                <div class="flex justify-end space-x-2">
+                    <button type="button" onclick="closeModal('ajuste')" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400">Cancelar</button>
+                    <button type="submit" class="px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700">Confirmar Ajuste</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <script>
 function openModal(tipo) {
@@ -169,10 +267,30 @@ function openModal(tipo) {
 function closeModal(tipo) {
     if (tipo === 'entrada') {
         document.getElementById('modalEntrada').classList.add('hidden');
+        document.getElementById('formEntrada').reset();
     } else if (tipo === 'saida') {
         document.getElementById('modalSaida').classList.add('hidden');
+        document.getElementById('formSaida').reset();
     } else if (tipo === 'ajuste') {
         document.getElementById('modalAjuste').classList.add('hidden');
+        document.getElementById('formAjuste').reset();
+    }
+}
+
+// Fechar modal ao clicar fora
+window.onclick = function(event) {
+    const modalEntrada = document.getElementById('modalEntrada');
+    const modalSaida = document.getElementById('modalSaida');
+    const modalAjuste = document.getElementById('modalAjuste');
+
+    if (event.target === modalEntrada) {
+        modalEntrada.classList.add('hidden');
+    }
+    if (event.target === modalSaida) {
+        modalSaida.classList.add('hidden');
+    }
+    if (event.target === modalAjuste) {
+        modalAjuste.classList.add('hidden');
     }
 }
 </script>
